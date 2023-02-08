@@ -37,6 +37,7 @@ export default class extends Component {
     if (this.loaded) return
     this.loaded = true
     const options = this.props.options || {};
+    const displayMode = this.props.displayMode || options.displayMode || 'email';
 
     if (this.props.projectId) {
       options.projectId = this.props.projectId;
@@ -57,7 +58,7 @@ export default class extends Component {
     this.editor = unlayer.createEditor({
       ...options,
       id: this.editorId,
-      displayMode: 'email',
+      displayMode,
       source: {
         name: pkg.name,
         version: pkg.version,
